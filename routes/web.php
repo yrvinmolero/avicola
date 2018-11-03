@@ -11,6 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('home.home');
-});
+Route::get('/', 'IndexController@index');
+
+Route::get('/home', 'HomeController@validateHome');
