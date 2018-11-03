@@ -9,8 +9,10 @@
     <!-- Animo.js-->
 <link rel="stylesheet" type="text/css" href="/css/template/animate-animo.min.css">
     <!-- Flag Icons-->
-<link rel="stylesheet" type="text/css" href="/css/template/flag-icon.min.css">
+<link rel="stylesheet" type="text/css" href="/css/template/font-awesome.min.css">
     <!-- Bootstrap Progressbar-->
 <link rel="stylesheet" type="text/css" href="/css/template/bootstrap-progressbar-3.3.4.min.css">
     <!-- Primary Style-->
 <link rel="stylesheet" type="text/css" href="/css/template/first-layout.css">
+
+<link rel="stylesheet" type="text/css" href="/css/template/select2.css">

@@ -9,7 +9,7 @@
     @include('partialsTemplate.head')
         
   </head>
-  <body data-sidebar-color="sidebar-light" class="sidebar-light">
+  <body data-sidebar-color="sidebar-light" class="sidebar-light header-yellow">
     <!-- Header start-->
     <header>
         @include('partialsTemplate.header')

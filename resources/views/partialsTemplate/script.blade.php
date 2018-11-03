@@ -11,4 +11,14 @@
  <script type="text/javascript" src="/js/template/jquery.easypiechart.min.js"></script>
     <!-- Custom JS-->
  <script type="text/javascript" src="/js/template/app.js"></script>
+
  <script type="text/javascript" src="/js/template/demo.js"></script>
+
+ <script type="text/javascript" src="/js/template/select2.js"></script>
+
+
+<script>
+	$(document).ready(function() {
+    	$('.select2').select2();
+	});
+</script>
