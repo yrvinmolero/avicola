@@ -17,7 +17,7 @@
                         <h2>Avicola</h2>
                     </div>
                     <div class="col-lg-6 col-md-8 col-sm-8 col-xs-12" style="padding: 20px;">
-                        <a  type="button" class="btn btn-outline btn-rounded btn-warning btn-lg pull-right" href="/home">Ingresar</a>
+                        <a class="btn btn-outline btn-rounded btn-warning btn-lg pull-right" href="/login">Ingresar</a>
                         <a type="button" class="btn btn-outline btn-rounded btn-warning btn-lg pull-right" href="/home">Registrate</a>
                     </div>
                 </div>
