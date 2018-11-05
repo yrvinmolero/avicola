@@ -6,10 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Usuarios extends Model
 {
-	protected $primaryKey = 'usuID';
+    //protege y declara los campos que pueden ser modificados por el usuario
+    //de igual manera sirve para insertar de manera inplicita en la tabla usuarios
+    protected $fillable = ['usuario', 'correo', 'clave', 'nombre', 'direccion', 'telefono', 'usuEstado'];
+    protected $primaryKey = 'usuID';
 
-    public function publicaciones() 
+    public function publicaciones()
     {
         return $this->hasMany('App\Models\Publicaciones', 'usuID');
     }
+
 }

@@ -4,9 +4,9 @@
 
 @section('modules')
 
-    @foreach($modules as $modul)
-        <li class="panel"><a href="widgets.html"><i class="{{$modul['modIcono']}}"></i><span class="sidebar-title">{{$modul['modDescripcion']}}</span></a></li>
-    @endforeach
+@foreach($modules as $modul)
+<li class="panel"><a href="{{$modul['modRoute']}}"><i class="{{$modul['modIcono']}}"></i><span class="sidebar-title">{{$modul['modDescripcion']}}</span></a></li>
+@endforeach
 @endsection
 
 @section('content')
@@ -38,9 +38,10 @@
 <div class="page-content container-fluid">
     <div class="page-content container-fluid p-0">
         <div class="row row-0 mailbox">
+            @foreach($publications as $publication)
             <div class="col-md-6">
                 <ul class="media-list inbox">
-                    @foreach($publications as $publication)
+
                     <li class="media">
                         <a href="javascript:;">
                             <div class="media-left avatar"><img src="/img/template/users/02.jpg" alt="" class="media-pub img-circle"><span class="status bg-success"></span></div>
@@ -54,10 +55,10 @@
                             </div>
                         </a>
                     </li>
-                    @endforeach
                 </ul>
             </div>
-            
+            @endforeach
+
         </div>
     </div>
 </div>
