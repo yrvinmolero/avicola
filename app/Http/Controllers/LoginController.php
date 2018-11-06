@@ -15,7 +15,8 @@ class LoginController extends Controller
 
         if ($usuario != '' || $pass != '') {
             $validar = Usuarios::where(array(['usuario', '=', $usuario], ['clave', '=', $pass]))->get()->toArray();
-            if ($validar[0]['usuario'] == $usuario && $validar[0]['clave'] == $pass) {
+            
+            if (!empty($validar)) {
                 $notification = array(
                     'title' => 'Email ingresado es incorrecto!',
                     'message' => 'Formato de email incorrecto, verifique.',
