@@ -22,7 +22,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-xs-12">
-                            <input type="text" placeholder="Email" name="email" class="form-control" pattern="^228\d{8}$">
+                            <input type="email" placeholder="Email" name="email" class="form-control">
                         </div>
                     </div>
                     <div class="form-group">

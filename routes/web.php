@@ -32,3 +32,5 @@ Route::post('/registerSuccess', 'RegisterController@validateLogin');
 Route::get('/reset', function(){
     return view('auth.reset.reset');
 });
+
+Route::get('/details', 'DetailsController@validateDetails');

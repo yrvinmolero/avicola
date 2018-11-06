@@ -43,7 +43,7 @@
                 <ul class="media-list inbox">
 
                     <li class="media">
-                        <a href="javascript:;">
+                        <a href="/details">
                             <div class="media-left avatar"><img src="/img/template/users/02.jpg" alt="" class="media-pub img-circle"><span class="status bg-success"></span></div>
                             <div class="media-body">
                                 <h4 class="media-heading">{{$publication['publicaciones']['pubTitulo']}}</h4>
