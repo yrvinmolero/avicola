@@ -16,6 +16,8 @@
 
  <script type="text/javascript" src="/js/template/select2.js"></script>
 
+ <script type="text/javascript" src="/js/template/validaciones.js"></script>
+
 
 <script>
 	$(document).ready(function() {

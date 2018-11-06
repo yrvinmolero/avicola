@@ -17,3 +17,8 @@ Route::get('/home', 'HomeController@validateHome');
 
 Route::get('/login', 'LoginController@login');
 
+Route::get('/createPublications', 'PublicationController@newPublication');
+
+Route::get('/getCategories', 'PublicationController@getCategoriesUnitsEggs');
+
+Route::post('/storePublication', 'PublicationController@store');

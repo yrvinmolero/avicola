@@ -8,10 +8,15 @@
 <link rel="stylesheet" type="text/css" href="/css/template/jquery.mCustomScrollbar.min.css">
     <!-- Animo.js-->
 <link rel="stylesheet" type="text/css" href="/css/template/animate-animo.min.css">
+
     <!-- Flag Icons-->
-<link rel="stylesheet" type="text/css" href="/css/template/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="/css/template/flag-icon.min.css">	
+
+<link rel="stylesheet" type="text/css" href="/css/template/font-awesome.min.css">	
     <!-- Bootstrap Progressbar-->
 <link rel="stylesheet" type="text/css" href="/css/template/bootstrap-progressbar-3.3.4.min.css">
+
+<link rel="stylesheet" type="text/css" href="/css/template/spinkit.css">
     <!-- Primary Style-->
 <link rel="stylesheet" type="text/css" href="/css/template/first-layout.css">
 

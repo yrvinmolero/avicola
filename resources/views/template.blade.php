@@ -7,7 +7,7 @@
     <title>Avicola App - @yield('title')</title>
     
     @include('partialsTemplate.head')
-        
+    @yield('specificCSS')
   </head>
   <body data-sidebar-color="sidebar-light" class="sidebar-light header-yellow">
     <!-- Header start-->
@@ -28,5 +28,7 @@
     </div>
         <!-- jQuery-->
     @include('partialsTemplate.script')
+
+    @yield('specificJS')
   </body>
 </html>
