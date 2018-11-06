@@ -4,9 +4,9 @@
 
 @section('modules')
 
-    @foreach($modules as $modul)
-        <li class="panel"><a href="widgets.html"><i class="{{$modul['modIcono']}}"></i><span class="sidebar-title">{{$modul['modDescripcion']}}</span></a></li>
-    @endforeach
+@foreach($modules as $modul)
+<li class="panel"><a href="{{$modul['modRoute']}}"><i class="{{$modul['modIcono']}}"></i><span class="sidebar-title">{{$modul['modDescripcion']}}</span></a></li>
+@endforeach
 @endsection
 
 @section('content')
@@ -50,7 +50,6 @@
                     </ul>
                 </div>
             @endforeach
-            
         </div>
     </div>
 </div>

@@ -15,10 +15,29 @@ Route::get('/', 'IndexController@index');
 
 Route::get('/home', 'HomeController@validateHome');
 
-Route::get('/login', 'LoginController@login');
+Route::get('/login', function(){
+    return view('auth.login.login');
+});
 
 Route::get('/createPublications', 'PublicationController@newPublication');
 
 Route::get('/getCategories', 'PublicationController@getCategoriesUnitsEggs');
 
 Route::post('/storePublication', 'PublicationController@store');
+
+Route::post('/validateLogin', 'LoginController@validateLogin');
+
+Route::get('/register', function(){
+    return view('auth.register.register');
+});
+
+Route::post('/validateRegister', 'RegisterController@validateRegister');
+
+Route::post('/registerSuccess', 'RegisterController@validateLogin');
+
+Route::get('/reset', function(){
+    return view('auth.reset.reset');
+});
+
+Route::get('/details', 'DetailsController@validateDetails');
+
