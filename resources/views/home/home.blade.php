@@ -13,12 +13,8 @@
 <div class="page-header clearfix">
     <div class="row">
         <div class="col-sm-6">
-            <h4 class="mt-0 mb-5">Blank Template</h4>
-            <ol class="breadcrumb mb-0">
-                <li><a href="#">Umega</a></li>
-                <li><a href="#">Extra Pages</a></li>
-                <li class="active">Blank Template</li>
-            </ol>
+            <h4 class="mt-0 mb-5">Listado de publicaciones</h4>
+            
         </div>
         <div class="col-sm-6">
             <div class="btn-group mt-5">
@@ -34,7 +30,7 @@
                 <div class="col-md-6">
                     <ul class="media-list inbox">
                         <li class="media">
-                            <a href="javascript:;">
+                            <a  href="/details">
                                 <div class="media-left avatar"><img src="/img/template/users/02.jpg" alt="" class="media-pub img-circle"><span class="status bg-success"></span></div>
                                 <div class="media-body">
                                     <h4 class="media-heading">{{$publication['publicaciones']['pubTitulo']}}</h4>
