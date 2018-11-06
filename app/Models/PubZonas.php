@@ -6,7 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Pubzonas extends Model 
 {
-    protected $primaryKey = 'pozID';
+    protected $primaryKey = 'pzoID';
+
+    protected $fillable = ['zonID', 'pubID', 'pzoMinimo'];
 
     public function publicaciones() 
     {

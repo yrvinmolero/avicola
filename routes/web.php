@@ -19,6 +19,12 @@ Route::get('/login', function(){
     return view('auth.login.login');
 });
 
+Route::get('/createPublications', 'PublicationController@newPublication');
+
+Route::get('/getCategories', 'PublicationController@getCategoriesUnitsEggs');
+
+Route::post('/storePublication', 'PublicationController@store');
+
 Route::post('/validateLogin', 'LoginController@validateLogin');
 
 Route::get('/register', function(){
@@ -34,3 +40,4 @@ Route::get('/reset', function(){
 });
 
 Route::get('/details', 'DetailsController@validateDetails');
+

@@ -22,15 +22,7 @@
         </div>
         <div class="col-sm-6">
             <div class="btn-group mt-5">
-                <button type="button" class="btn btn-default btn-outline"><i class="flag-icon flag-icon-us mr-5"></i> English</button>
-                <button type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-default btn-outline dropdown-toggle"><span class="caret"></span><span class="sr-only">Toggle Dropdown</span></button>
-                <ul class="dropdown-menu dropdown-menu-right animated fadeInDown">
-                    <li><a href="#"><i class="flag-icon flag-icon-de mr-5"></i> German</a></li>
-                    <li><a href="#"><i class="flag-icon flag-icon-fr mr-5"></i> French</a></li>
-                    <li><a href="#"><i class="flag-icon flag-icon-es mr-5"></i> Spanish</a></li>
-                    <li><a href="#"><i class="flag-icon flag-icon-it mr-5"></i> Italian</a></li>
-                    <li><a href="#"><i class="flag-icon flag-icon-jp mr-5"></i> Japanese</a></li>
-                </ul>
+                <a href="/createPublications" class="btn btn-outline btn-warning"><i class="fa fa-plus"></i> Crear una publicación</a>
             </div>
         </div>
     </div>
@@ -39,26 +31,25 @@
     <div class="page-content container-fluid p-0">
         <div class="row row-0 mailbox">
             @foreach($publications as $publication)
-            <div class="col-md-6">
-                <ul class="media-list inbox">
+                <div class="col-md-6">
+                    <ul class="media-list inbox">
+                        <li class="media">
+                            <a href="javascript:;">
+                                <div class="media-left avatar"><img src="/img/template/users/02.jpg" alt="" class="media-pub img-circle"><span class="status bg-success"></span></div>
+                                <div class="media-body">
+                                    <h4 class="media-heading">{{$publication['publicaciones']['pubTitulo']}}</h4>
+                                    <p class="summary">por {{$publication['publicaciones']['usuarios']['nombre']}} - {{$publication['publicaciones']['created_at']}}</p>
+                                    <p class="summary"><i class="fa fa-tasks"></i> Tipo: Blanco.</p>
+                                    <p class="summary"><i class="fa fa-ellipsis-h"></i> Clasif: Jumbo.</p>
+                                    <p class="summary"><i class="fa fa-truck"></i> Distribucación: Bandeja.</p>
+                                    <h3><b>$5.000</b></h3>
+                                </div>
+                            </a>
+                        </li>
 
-                    <li class="media">
-                        <a href="/details">
-                            <div class="media-left avatar"><img src="/img/template/users/02.jpg" alt="" class="media-pub img-circle"><span class="status bg-success"></span></div>
-                            <div class="media-body">
-                                <h4 class="media-heading">{{$publication['publicaciones']['pubTitulo']}}</h4>
-                                <p class="summary">por {{$publication['publicaciones']['usuarios']['nombre']}} - {{$publication['publicaciones']['pubFecReg']}}</p>
-                                <p class="summary"><i class="fa fa-tasks"></i> Tipo: Blanco.</p>
-                                <p class="summary"><i class="fa fa-ellipsis-h"></i> Clasif: Jumbo.</p>
-                                <p class="summary"><i class="fa fa-truck"></i> Distribucación: Bandeja.</p>
-                                <h3><b>$5.000</b></h3>
-                            </div>
-                        </a>
-                    </li>
-                </ul>
-            </div>
+                    </ul>
+                </div>
             @endforeach
-
         </div>
     </div>
 </div>
