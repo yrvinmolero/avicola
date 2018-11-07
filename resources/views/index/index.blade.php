@@ -1,4 +1,4 @@
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" style="height: 100%">
     <head>
         <meta charset="utf-8">
@@ -44,8 +44,9 @@
                         <div class="col-sm-4 col-xs-6">
                             <select class="select2" name="comuna" style="width: 100%;">
                                 <option disabled selected="">Seleccionar</option>
+
                                 @foreach ($zones as $zone)
-                                    <option value="{{$zone['zonID']}}">{{$zone['zonDescripcion']}}</option>
+                                <option value="{{$zone['zonID']}}">{{$zone['zonDescripcion']}}</option>
                                 @endforeach
                             </select>
                         </div>
