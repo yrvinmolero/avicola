@@ -5,12 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Modulos;
 use App\Models\StockZonas;
-
 use App\Traits\Modules;
 
-class HomeController extends Controller {
+class HomeController extends Controller
+{
 
     use Modules;
+
     
     public function validateHome() {
         $zonID = null;
@@ -24,7 +25,7 @@ class HomeController extends Controller {
         return view('home.home', compact('modules', 'publications'));
     }
 
-    public function getPublications($zonID) 
+    public function getPublications($zonID)
     {
        return  StockZonas::with('stock.publicaciones.usuarios', 'zonas')
         		->whereHas('zonas', function ($zonas) use ($zonID){
@@ -33,5 +34,7 @@ class HomeController extends Controller {
                     else
                         $zonas->where('zonEstado', '=', 'A');
         		})->get()->toArray();
+
     }
+
 }

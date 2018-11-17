@@ -41,3 +41,6 @@ Route::get('/reset', function(){
 
 Route::get('/details', 'DetailsController@validateDetails');
 
+Route::get('/perfil', 'perfileController@validatePerfil');
+
+
