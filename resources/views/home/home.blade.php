@@ -33,8 +33,8 @@
                             <a  href="/details">
                                 <div class="media-left avatar"><img src="/img/template/users/02.jpg" alt="" class="media-pub img-circle"><span class="status bg-success"></span></div>
                                 <div class="media-body">
-                                    <h4 class="media-heading">{{$publication['publicaciones']['pubTitulo']}}</h4>
-                                    <p class="summary">por {{$publication['publicaciones']['usuarios']['nombre']}} - {{$publication['publicaciones']['created_at']}}</p>
+                                    <h4 class="media-heading">{{$publication['stock']['publicaciones']['pubTitulo']}}</h4>
+                                    <p class="summary">por {{$publication['stock']['publicaciones']['usuarios']['nombre']}} - {{$publication['stock']['publicaciones']['created_at']}}</p>
                                     <p class="summary"><i class="fa fa-tasks"></i> Tipo: Blanco.</p>
                                     <p class="summary"><i class="fa fa-ellipsis-h"></i> Clasif: Jumbo.</p>
                                     <p class="summary"><i class="fa fa-truck"></i> Distribucación: Bandeja.</p>

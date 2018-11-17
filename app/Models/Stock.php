@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Stock extends Model
 {
-	protected $fillable = ['stoCantidad', 'cunID', 'disID', 'pubID', 'stoEstado'];
+	protected $fillable = ['stoCantidad', 'cunID', 'disID', 'pubID', 'stoPrecio', 'stoEstado'];
 
     protected $primaryKey = 'stoID';
     protected $table = "stock";
@@ -24,6 +24,11 @@ class Stock extends Model
     public function publicaciones()
     {
     	return $this->belongsTo('App\Models\Publicaciones', 'pubID');
+    }
+
+     public function stockZonas() 
+    {
+        return $this->hasOne('App\Models\stockZonas', 'stoID');
     }
 
 }

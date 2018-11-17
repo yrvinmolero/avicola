@@ -10,10 +10,6 @@ class Publicaciones extends Model
 
 	protected $primaryKey = 'pubID';
 
-    public function pubZonas() 
-    {
-        return $this->hasOne('App\Models\PubZonas', 'pubID');
-    }
 
     public function usuarios() 
     {
