@@ -27,96 +27,111 @@
                 <div class="widget-body">
                   <form id="formNewPublication">
                     {{csrf_field()}}
-                    <div class="col-xs-12">
-                    	<div class="form-group">
-                      		<label for="textInput">Título</label>
-                      		<input id="titulo" type="text" name="titulo" class="form-control">
-                            <span class="help-block"></span>
-                    	</div>
-                    </div>
-                   	<div class="col-xs-12">
-	                    <div class="form-group">
-	                      <label for="textArea">Descripción</label>
-	                      <textarea id="descripcion" rows="3" name="descripcion" class="form-control"></textarea>
-                          <span class="help-block"></span>
-	                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                        	<div class="form-group">
+                          		<label for="textInput">Título</label>
+                          		<input id="title" type="text" name="publication[title]" class="form-control">
+                                <span class="help-block"></span>
+                        	</div>
+                        </div>
                     </div>
                     <div class="row">
-                        <div class="col-lg-6 col-md-6 col-xs-12">
-                            <div class="form-group">
-                               <label for="selectZones">Zona</label>
-                                <select id="selectZones" class=" form-control" name="selectZones" style="width: 100%;">
-                                    <option disabled selected="">Seleccione</option>
-                                    @foreach ($data['zones'] as $zones)
-                                        <option value="{{$zones['zonID']}}">{{$zones['zonDescripcion']}}</option>
-                                    @endforeach
-                                </select>
-                                <span class="help-block"></span>
-                            </div>
+                       	<div class="col-xs-12">
+    	                    <div class="form-group">
+    	                      <label for="textArea">Descripción</label>
+    	                      <textarea id="description" rows="3" name="publication[description]" class="form-control"></textarea>
+                              <span class="help-block"></span>
+    	                    </div>
                         </div>
+                    </div>
+                    
+                    <div class="row products">
+                        <div class="widget widget-products" style=" margin-top:15px;">
+                            <div class="widget-heading">
+                                <h3 class="widget-title" id="productsTittle">Producto N° 1</h3>
+                            </div>
+                            <div class="widget-body">
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6 col-xs-12 col-lg-offset-3 col-md-offset-3">
+                                        <div class="form-group">
+                                           <label for="selectZones">Zona</label>
+                                            <select id="selectZones-1" class=" form-control" name="publication[products][1][zones]" style="width: 100%;">
+                                                <option disabled selected="">Seleccione</option>
+                                                @foreach ($data['zones'] as $zones)
+                                                    <option value="{{$zones['zonID']}}">{{$zones['zonDescripcion']}}</option>
+                                                @endforeach
+                                            </select>
+                                            <span class="help-block"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-4 col-md-4 col-xs-12">
+                                        <div class="form-group">
+                                           <label for="selectType">Tipo</label>
+                                            <select onchange="setSelectCategories(this.value, 1);" id="selectType-1" class=" form-control" name="publication[products][1][type]" style="width: 100%;">
+                                                <option disabled selected="">Seleccione</option>
+                                                @foreach ($data['units'] as $units)
+                                                    <option value="{{$units['uniID']}}">{{$units['uniDescripcion']}}</option>
+                                                @endforeach
+                                            </select>
+                                            <span class="help-block"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-xs-12">
+                                        <div class="form-group">
+                                           <label for="selectCategories">Categoria</label>
+                                            <select id="selectCategories-1" class=" form-control" name="publication[products][1][categories]" disabled style="width: 100%;">
+                                                <option disabled selected="">Seleccione</option>
+                                            </select>
+                                            <span class="help-block"></span>
+                                        </div>
+                                    </div>
 
-                        <div class="col-lg-6 col-md-6 col-xs-12">
-                            <div class="form-group">
-                                <label for="pozMinima">Cantidad minima por compra</label>
-                                <input id="pozMinima" type="text" name="pozMinima" class="form-control">
-                                <span class="help-block"></span>
+                                    <div class="col-lg-4 col-md-4 col-xs-12">
+                                        <div class="form-group">
+                                            <label for="textInput">Cantidad</label>
+                                            <input id="quantity-1" name="publication[products][1][quantity]" type="text" class="form-control">
+                                            <span class="help-block"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-4 col-md-4 col-xs-12">
+                                        <div class="form-group">
+                                           <label for="selectDistribution">Distribución</label>
+                                            <select id="selectDistribution-1" class=" form-control" name="publication[products][1][distribution]"  style="width: 100%;">
+                                                <option disabled selected="">Seleccione</option>
+                                                @foreach ($data['distribution'] as $distribution)
+                                                    <option value="{{$distribution['disID']}}">{{$distribution['disDescripcion']}}</option>
+                                                @endforeach
+                                            </select>
+                                            <span class="help-block"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-xs-12">
+                                        <div class="form-group">
+                                            <label for="quantityMin">Cantidad minima por compra</label>
+                                            <input id="quantityMin-1" type="text" name="publication[products][1][quantityMin]" class="form-control">
+                                            <span class="help-block"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-xs-12">
+                                        <div class="form-group">
+                                            <label for="price">Precio</label>
+                                            <input id="price-1" name="publication[products][1][price]" type="text" class="form-control">
+                                            <span class="help-block"></span>    
+                                        </div>
+                                    </div>      
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-lg-6 col-md-6 col-xs-12">
-    	                    <div class="form-group">
-    	                       <label for="selectUnits">Tipo</label>
-                            	<select onchange="setSelectCategories(this.value);" id="selectUnits" class=" form-control" name="units" style="width: 100%;">
-    	                            <option disabled selected="">Seleccione</option>
-    	                            @foreach ($data['units'] as $units)
-    	                                <option value="{{$units['uniID']}}">{{$units['uniDescripcion']}}</option>
-    	                            @endforeach
-                            	</select>
-                                <span class="help-block"></span>
-    	                    </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-xs-12">
-    	                    <div class="form-group">
-    	                       <label for="selectCategories">Categoria</label>
-                            	<select id="selectCategories" class=" form-control" name="categories" disabled style="width: 100%;">
-    	                            <option disabled selected="">Seleccione</option>
-                            	</select>
-                                <span class="help-block"></span>
-    	                    </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-4">
-                            <div class="form-group">
-                                <label for="textInput">Cantidad</label>
-                                <input id="cantidad" name="cantidad" type="text" class="form-control">
-                                <span class="help-block"></span>
-                            </div>
-                        </div>
-                    	<div class="col-lg-4 col-md-4 col-xs-12">
-    	                    <div class="form-group">
-    	                       <label for="selectDistribution">Distribución</label>
-                            	<select id="selectDistribution" class=" form-control" name="ditribution"  style="width: 100%;">
-    	                            <option disabled selected="">Seleccione</option>
-    	                            @foreach ($data['distribution'] as $distribution)
-    	                                <option value="{{$distribution['disID']}}">{{$distribution['disDescripcion']}}</option>
-    	                            @endforeach
-                            	</select>
-                                <span class="help-block"></span>
-    	                    </div>
-                        </div>
-                        
-                        <div class="col-xs-4">
-                            <div class="form-group">
-                                <label for="textInput">Precio</label>
-                                <input id="precio" name="precio" type="text" class="form-control">
-                                <span class="help-block"></span>    
-                            </div>
-                        </div>      
-                    </div>
-	                <div class="row">
-                        <a onclick="storePublication();" type="submit" class="btn btn-outline btn-success">Crear publicación</a>
+
+	                <div class="row ">
+                        <a onclick="addProducts();" type="submit" class="btn btn-outline btn-primary  pull-left"><i class="fa fa-plus"></i> Añadir producto</a>
+                        <a onclick="storePublication();" type="submit" class="btn btn-outline btn-success  pull-right"><i class="fa fa-save"></i> Crear publicación</a>
                     </div>
                   </form>
                 </div>
@@ -148,9 +163,35 @@
 @section('specificJS')
 
 <script>
-	function setSelectCategories(uniID)
+
+    var products = $(".products").html();
+    
+    function addProducts(){
+        count = $(".widget-products").length + 1;
+        //reemplazamos ID de elementos sumandoles +1 despues del "-"
+        addProduct = products.replace('<input value="1" hidden>', "<input value="+count+">");
+        addProduct = addProduct.replace('Producto N° 1', "Producto N° "+ count);
+        addProduct = addProduct.replace('this.value, 1', "this.value, "+ count);
+        addProduct = addProduct.replace('selectZones-1', "selectZones-"+ count);
+        addProduct = addProduct.replace('selectCategories-1', "selectCategories-"+ count);
+        addProduct = addProduct.replace('selectType-1', "selectType-"+ count);
+        addProduct = addProduct.replace('quantity-1', "quantity-"+ count);
+        addProduct = addProduct.replace('selectDistribution-1', "selectDistribution-"+ count);
+        addProduct = addProduct.replace('quantityMin-1', "quantityMin-"+ count);
+        addProduct = addProduct.replace('price-1', "price-"+ count);
+        addProduct = addProduct.replace("publication[products][1][zones]", 'publication[products]['+count+'][zones]');
+        addProduct = addProduct.replace("publication[products][1][type]", 'publication[products]['+count+'][type]');
+        addProduct = addProduct.replace("publication[products][1][categories]", 'publication[products]['+count+'][categories]');
+        addProduct = addProduct.replace("publication[products][1][quantity]", 'publication[products]['+count+'][quantity]');
+        addProduct = addProduct.replace("publication[products][1][distribution]", 'publication[products]['+count+'][distribution]');
+        addProduct = addProduct.replace("publication[products][1][quantityMin]", 'publication[products]['+count+'][quantityMin]');
+        addProduct = addProduct.replace("publication[products][1][price]", 'publication[products]['+count+'][price]');
+
+        $(".products").append(addProduct);
+    }
+
+	function setSelectCategories(uniID, divID)
 	{
-		
 		$.ajax({
 			url: '/getCategories',
             type: 'GET',
@@ -161,83 +202,88 @@
             success: function (data) {
             	var select = "<option disabled selected>Seleccione</option>";
 	            $.each(data, function (i, getdata) {
-	            	select+= "<option value='" + getdata.categorias.catID + "'>"+getdata.categorias.catDescripcion+"</option>"; 
+	            	select+= "<option value='" + getdata.cunID + "'>"+getdata.categorias.catDescripcion+"</option>"; 
 	            });
 
-	          $("#selectCategories").removeAttr('disabled');
-	          $("#selectCategories").html(select);
+	          $("#selectCategories-" + divID).removeAttr('disabled');
+	          $("#selectCategories-" + divID).html(select);
 			}
 		});	
 	}
 
     function storePublication()
     {
-        titulo = $("#titulo").val();
-        descripcion = $("#descripcion").val();
-        zona = $("#selectZones").val();
-        unidad = $("#selectUnits").val();
-        categorias = $("#selectCategories").val();
-        cantidad = $("#cantidad").val();
-        distribution = $("#selectDistribution").val();
-        precio = $("#precio").val();
-        pozMinima = $("#pozMinima").val();
         
         $('.form-group').removeClass('has-error');
         $('.select2-selection__rendered').removeClass('select2Error');
         $('.form-group').children('.help-block').html('');
 
-        if(estaVacio(titulo)){
-            $('#titulo').parent().addClass('has-error');
-            $('#titulo').parent().children('span').html('Debe ingresar un título.');
+        title = $("#title").val();
+        description = $("#description").val();
+
+        if(estaVacio(title)){
+            $('#title').parent().addClass('has-error');
+            $('#title').parent().children('span').html('Debe ingresar un título.');
             return
         }
         
-        if(estaVacio(descripcion)){
-            $('#descripcion').parent().addClass('has-error');
-            $('#descripcion').parent().children('span').html('Debe ingresar una descripción.');
+        if(estaVacio(description)){
+            $('#description').parent().addClass('has-error');
+            $('#description').parent().children('span').html('Debe ingresar una descripción.');
             return
         }
 
-        if(!estaSeleccionado(zona)){
-            $('#selectZones').parent().addClass('has-error');
-            $('#selectZones').parent().children('span').html('Debe ingresar una zona.');
-            return
-        }
+        for (var i = 1; i <= $(".widget-products").length; i++) {
+            
+            selectZones = $("#selectZones-"+i).val();
+            selectType = $("#selectType-"+i).val();
+            selectCategories = $("#selectCategories-"+i).val();
+            quantity = $("#quantity-"+i).val();
+            selectDistribution = $("#selectDistribution-"+i).val();
+            quantityMin = $("#quantityMin-"+i).val();
+            price = $("#price-"+i).val();
 
-        if(!estaSeleccionado(pozMinima)){
-            $('#pozMinima').parent().addClass('has-error');
-            $('#pozMinima').parent().children('span').html('Debe ingresar una cantidad minima permitida de compra.');
-            return
-        }
+            if(!estaSeleccionado(selectZones)){
+                $('#selectZones-'+i).parent().addClass('has-error');
+                $('#selectZones-'+i).parent().children('span').html('Debe ingresar una zona.');
+                return
+            }
 
-        if(!estaSeleccionado(unidad)){
-            $('#selectUnits').parent().addClass('has-error');
-            $('#selectUnits').parent().children('span').html('Debe ingresar un tipo.');
-            return
-        }
+            if(!estaSeleccionado(selectType)){
+                $('#selectType-'+i).parent().addClass('has-error');
+                $('#selectType-'+i).parent().children('span').html('Debe ingresar un tipo.');
+                return
+            }
 
-        if(!estaSeleccionado(categorias)){
-            $('#selectCategories').parent().addClass('has-error');
-            $('#selectCategories').parent().children('span').html('Debe ingresar una categoria.');
-            return
-        }
+            if(!estaSeleccionado(selectCategories)){
+                $('#selectCategories-'+i).parent().addClass('has-error');
+                $('#selectCategories-'+i).parent().children('span').html('Debe ingresar una categoria.');
+                return
+            }
 
-        if(estaVacio(cantidad)){
-            $('#cantidad').parent().addClass('has-error');
-            $('#cantidad').parent().children('span').html('Debe ingresar una cantidad.');
-            return
-        }
+            if(estaVacio(quantity)){
+                $('#quantity-'+i).parent().addClass('has-error');
+                $('#quantity-'+i).parent().children('span').html('Debe ingresar una cantidad.');
+                return
+            }
 
-        if(!estaSeleccionado(distribution)){
-            $('#distribution').parent().addClass('has-error');
-            $('#distribution').parent().children('span').html('Debe ingresar una tipo de distribución.');
-            return
-        }
+            if(!estaSeleccionado(selectDistribution)){
+                $('#selectDistribution-'+i).parent().addClass('has-error');
+                $('#selectDistribution-'+i).parent().children('span').html('Debe ingresar una tipo de distribución.');
+                return
+            }
 
-        if(estaVacio(precio)){
-            $('#precio').parent().addClass('has-error');
-            $('#precio').parent().children('span').html('Debe ingresar una precio.');
-            return
+            if(!estaSeleccionado(quantityMin)){
+                $('#quantityMin-'+i).parent().addClass('has-error');
+                $('#quantityMin-'+i).parent().children('span').html('Debe ingresar una cantidad minima permitida de compra.');
+                return
+            }
+
+            if(estaVacio(price)){
+                $('#price-'+i).parent().addClass('has-error');
+                $('#price-'+i).parent().children('span').html('Debe ingresar una precio.');
+                return
+            }
         }
 
         $.ajaxSetup({
@@ -254,7 +300,6 @@
                 $("#loading").show();
             },
             success: function (data) {
-                console.log(data);
                 if(data.sucessful === true){
                     font = "<i class='fa fa-check fa-5x' style='color: #4caf50;'></i>" ;
                     description = data.descripcion;

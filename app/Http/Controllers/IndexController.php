@@ -11,10 +11,8 @@ class IndexController extends Controller
 
     public function index()
     {
-        $zones = Stockzonas::with('zonas')->whereHas('zonas', function ($zonas) {
-                    $zonas->where('zonEstado', '=', 'A');
-                })->get()->toArray();
-        dd($zones);
+        $zones = Zonas::where('zonEstado', '=', 'A')->get()->toArray(); 
+
         return view('index.index', compact('zones'));
     }
 

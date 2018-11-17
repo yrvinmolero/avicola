@@ -27,7 +27,7 @@
     <div class="page-content container-fluid p-0">
         <div class="row row-0 mailbox">
             @foreach($publications as $publication)
-            <div class="col-md-6">
+    <div class="col-md-6">
                 <ul class="media-list inbox">
                     <li class="media">
                         <a  href="/details">

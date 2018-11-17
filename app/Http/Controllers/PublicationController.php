@@ -10,7 +10,7 @@ use App\Models\CategoriasUnidades;
 use App\Models\Distribuciones;
 use App\Models\Zonas;
 use App\Models\Publicaciones;
-use App\Models\PubZonas;
+use App\Models\StockZonas;
 use App\Models\Stock;
 use \DateTime;
 
@@ -26,57 +26,57 @@ class PublicationController extends Controller
         try {
 
             DB::beginTransaction();
+           
             $inputs = [
                 'usuID' => 1, 
-                'pubTitulo' => $request->get('titulo'), 
-                'pubDescripcion' => $request->get(  'descripcion'), 
-                'pubPrecio' => $request->get('precio')
+                'pubTitulo' => $request->get('publication')['title'], 
+                'pubDescripcion' => $request->get('publication')['description']
             ];
 
             $publication = new Publicaciones;
             $publication->fill($inputs);
     
-            if(!$publication->save()){
+            if(!$publication->save())
                throw new Exception("Error al crear la publicación, por favor, intente más tarde.", 1);
-               
+            
+            for ($i=1; $i <= count($request->get('publication')['products']) ; $i++) { 
+                $inputs = [
+                    'stoCantidad' => $request->get('publication')['products'][$i]['quantity'], 
+                    'cunID' => $request->get('publication')['products'][$i]['categories'],
+                    'disID' => $request->get('publication')['products'][$i]['distribution'],
+                    'pubID' => $publication->pubID, 
+                    'stoPrecio' => $request->get('publication')['products'][$i]['price']
+                ];
+
+                $stock = new Stock;
+                $stock->fill($inputs);
+
+                if(!$stock->save())
+                    throw new Exception("Error interno, por favor, intente más tarde.", 1);
+
+                $inputs = [
+                    'stoID' => $stock->stoID, 
+                    'zonID' => $request->get('publication')['products'][$i]['zones'],
+                    'pzoMinimo' => $request->get('publication')['products'][$i]['quantityMin'],
+                    'pubID' => $publication->pubID 
+                ];
+
+                $stockZonas = new StockZonas;
+                $stockZonas->fill($inputs);
+
+                if(!$stockZonas->save())
+                    throw new Exception("Error interno, por favor, intente más tarde.", 1);
             }
 
-            $inputs = [
-                'zonID' => $request->get('selectZones'), 
-                'pubID' => $publication->pubID, 
-                'pzoMinimo' => $request->get('pozMinima')
-            ];
-
-            $pubZonas = new PubZonas;
-            $pubZonas->fill($inputs);
-    
-            if(!$pubZonas->save()){
-               throw new Exception("Error interno, por favor, intente más tarde.", 1);
-               
-            }
-
-            $inputs = [
-                'stoCantidad' => $request->get('selectZones'), 
-                'cunID' => $publication->pubID, 
-                'disID' => $request->get('pozMinima'),
-                'pubID' => $request->get('pozMinima')
-            ];
-
-            $stock = new Stock;
-            $stock->fill($inputs);
-    
-            if(!$stock->save()){
-               throw new Exception("Error al crear el stock de la publicación, por favor, intente más tarde.", 1);
-               
-            }
             DB::commit();
 
             return json_encode(array(
                 "successfull" => true,
                 "descripcion" => "La publicación se ha realizado exitosamente."
                 ));
+
         } catch (Exception $e) {
-            DB::rollBack();
+            DB::rollback();
             return json_encode(array(
                 "successfull" => false,
                 "descripcion" => $e->getMessage()
@@ -91,7 +91,6 @@ class PublicationController extends Controller
     	$data['units'] = $this->getUnitsEggs();
     	$data['distribution'] = $this->getDistribution();
         $data['zones'] = $this->getZones();
-
     	return view('publications.newPublication', compact('modules', 'data'));
     }
 
@@ -110,6 +109,7 @@ class PublicationController extends Controller
     	$uniID = $request->get('uniID');
 
     	return $catUnits = CategoriasUnidades::with('categorias')->where(array(['cunEstado', '=', 'A'], ['uniID', '=', $uniID]))->get()->toArray();
+     
     }
 
     private function getDistribution()
