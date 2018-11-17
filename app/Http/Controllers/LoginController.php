@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use App\Models\Usuarios;
 
 class LoginController extends Controller
@@ -15,14 +16,16 @@ class LoginController extends Controller
 
         if ($usuario != '' || $pass != '') {
             $validar = Usuarios::where(array(['usuario', '=', $usuario], ['clave', '=', $pass]))->get()->toArray();
-            
+
             if (!empty($validar)) {
                 $notification = array(
                     'title' => 'Email ingresado es incorrecto!',
                     'message' => 'Formato de email incorrecto, verifique.',
                     'alert-type' => 'success'
                 );
-                return redirect('/home')->with($notification);
+                Session::put('name', $validar[0]['nombre']);
+                Session::put('usuID', $validar[0]['usuID']);
+                return redirect('/home')->with($notification, $validar);
             } else {
                 $notification = array(
                     'title' => 'Usuario o Contraseña incorrectos!',

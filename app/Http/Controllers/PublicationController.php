@@ -72,13 +72,13 @@ class PublicationController extends Controller
             DB::commit();
 
             return json_encode(array(
-                "sucessful" => true,
+                "successfull" => true,
                 "descripcion" => "La publicación se ha realizado exitosamente."
                 ));
         } catch (Exception $e) {
             DB::rollBack();
             return json_encode(array(
-                "sucessful" => false,
+                "successfull" => false,
                 "descripcion" => $e->getMessage()
             ));
         }

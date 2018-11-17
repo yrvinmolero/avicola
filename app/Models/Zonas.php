@@ -12,5 +12,10 @@ class Zonas extends Model
     {
    		return $this->hasMany('App\Models\PubZonas', 'zonID');
     }
+    
+    public function usuarioestablecimiento()
+    {
+   		return $this->belongsTo('App\Models\usuarioestablecimiento', 'estID');
+    }
 
 }

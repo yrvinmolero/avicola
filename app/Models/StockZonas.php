@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Pubzonas extends Model 
+class Stockzonas extends Model 
 {
     protected $primaryKey = 'pzoID';
 
