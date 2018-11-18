@@ -15,6 +15,8 @@ Route::get('/', 'IndexController@index');
 
 Route::get('/home', 'HomeController@validateHome');
 
+Route::get('/getProducts', 'HomeController@getProducts');
+
 Route::get('/login', function(){
     return view('auth.login.login');
 });

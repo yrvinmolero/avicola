@@ -46,7 +46,8 @@
                                 <option disabled selected="">Seleccionar</option>
 
                                 @foreach ($zones as $zone)
-                                <option selected="">{{$zone['zonas']['zonDescripcion']}}</option>
+                                <option value="{{$zone['zonID']}}">{{$zone['zonDescripcion']}}</option>
+
                                 @endforeach
                             </select>
                         </div>

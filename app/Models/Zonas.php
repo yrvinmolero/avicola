@@ -6,16 +6,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class Zonas extends Model
 {
+
     protected $primaryKey = 'zonID';
 
-    public function pubZonas()
+    public function stockzonas()
     {
-   		return $this->hasMany('App\Models\PubZonas', 'zonID');
+        return $this->hasMany('App\Models\Stockzonas', 'pzoID');
     }
-    
+
     public function usuarioestablecimiento()
     {
-   		return $this->belongsTo('App\Models\usuarioestablecimiento', 'estID');
+        return $this->belongsTo('App\Models\usuarioestablecimiento', 'estID');
     }
 
 }

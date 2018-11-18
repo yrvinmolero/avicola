@@ -19,7 +19,7 @@ class Publicaciones extends Model
 
     public function stock() 
     {
-        return $this->hasOne('App\Models\Stock', 'pubID');
+        return $this->hasMany('App\Models\Stock', 'pubID');
     }
 
 }
