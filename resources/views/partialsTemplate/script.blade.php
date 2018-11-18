@@ -24,7 +24,6 @@
 <script>
     $(document).ready(function () {
         $('.select2').select2();
-        $(data).modal('show');
         $("#product-list").dataTable();
     });
 </script>
