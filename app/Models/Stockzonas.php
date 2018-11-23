@@ -19,7 +19,7 @@ class Stockzonas extends Model
     {
         return $this->belongsTo('App\Models\Zonas', 'zonID');
     }
-    
+
     public function stock()
     {
         return $this->belongsTo('App\Models\Stock', 'stoID');

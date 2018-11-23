@@ -63,36 +63,59 @@
                 </div>
                 <div class="widget-body">
                     <ul class="media-list mb-0">
+                        @foreach($datausers as $data)
                         <li class="media">
                             <div class="media-left"><i class="far fa-envelope"></i></div>
                             <div class="media-body">
-                                <p>lethemes@gmail.com</p>
+                                <input hidden id="correo" value="{{$data['correo']}}">
+                                <input hidden id="telefono1" value="{{$data['telefono']}}">
+                                <input hidden id="facebook1" value="{{$data['facebook']}}">
+                                <input hidden id="twitter1" value="{{$data['twitter']}}">
+                                <input hidden id="linkedin1" value="{{$data['linkedin']}}">
+                                <p>{{$data['correo']}}</p>
                             </div>
                         </li>
                         <li class="media">
                             <div class="media-left"><i class="fab fa-whatsapp"></i></div>
                             <div class="media-body">
-                                <p>(251) 300-2770</p>
+                                @if($data['telefono'])
+                                <p>{{$data['telefono']}}</p>
+                                @else
+                                <p>-</p>
+                                @endif
                             </div>
                         </li>
                         <li class="media">
                             <div class="media-left"><i class="fab fa-facebook"></i></div>
                             <div class="media-body">
-                                <p>Facebook</p>
+                                @if($data['facebook'])
+                                <p>{{$data['facebook']}}</p>
+                                @else
+                                <p>-</p>
+                                @endif
                             </div>
                         </li>
                         <li class="media">
                             <div class="media-left"><i class="fab fa-twitter"></i></div>
                             <div class="media-body">
-                                <p>Twitter</p>
+                                @if($data['twitter'])
+                                <p>{{$data['twitter']}}</p>
+                                @else
+                                <p>-</p>
+                                @endif
                             </div>
                         </li>
                         <li class="media">
                             <div class="media-left"><i class="fab fa-linkedin"></i></div>
                             <div class="media-body">
-                                <p>Linkedin</p>
+                                @if($data['linkedin'])
+                                <p>{{$data['linkedin']}}</p>
+                                @else
+                                <p>-</p>
+                                @endif
                             </div>
                         </li>
+                        @endforeach
                     </ul>
                 </div>
             </div>
@@ -153,18 +176,28 @@
                 <h4 id="myLargeModalLabel" class="modal-title">Datos de Contacto</h4>
             </div>
             <div class="modal-body">
-                <form method="POST" action="">
+                <div class="col-xs-12" hidden id="loading">
+                    <div class="loading-demo text-center">
+                        <div class="sk-double-bounce" style="margin:0 !important;">
+                            <div class="sk-child sk-double-bounce1"></div>
+                            <div class="sk-child sk-double-bounce2"></div>
+                        </div>
+                        <h5>&nbsp; Guardando datos, por favor espere...</h5>
+                    </div>
+                </div> 
+                <form id="formdatoscontacto">
+                    {{csrf_field()}}
                     <div class="form-group">
                         <div class="col-lg-12">
                             <div class="col-lg-6">
                                 <br>
                                 <label for="email">Email <span style="color: red;">*</span></label>
-                                <input id="email" type="text" placeholder="Ingresar email" class="form-control" required>
+                                <input id="email" name="personalData[email]" type="text" placeholder="Ingresar email" class="form-control" required>
                             </div>
                             <div class="col-lg-6">
                                 <br>
                                 <label for="tel">Whatsapp <span style="color: red;">*</span></label>
-                                <input id="tel" type="tel" placeholder="Ingresar Whatsapp" class="form-control" required>
+                                <input id="tel" name="personalData[tel]" type="tel" placeholder="Ingresar Whatsapp" class="form-control" required>
                             </div>
                         </div>
                     </div>
@@ -173,12 +206,12 @@
                             <div class="col-lg-6">
                                 <br>
                                 <label for="facebook">Cuenta Facebook</label>
-                                <input id="facebook" type="url" placeholder="Ingresar Facebook" class="form-control">
+                                <input id="facebook" name="personalData[facebook]" type="url" placeholder="Ingresar Facebook" class="form-control">
                             </div>
                             <div class="col-lg-6">
                                 <br>
                                 <label for="twitter">Cuenta Twitter</label>
-                                <input id="twitter" type="url" placeholder="Ingresar Twitter" class="form-control">
+                                <input id="twitter" name="personalData[twitter]" type="url" placeholder="Ingresar Twitter" class="form-control">
                             </div>
                         </div>
                     </div>
@@ -187,13 +220,13 @@
                             <div class="col-lg-12">
                                 <br>
                                 <label for="linkedin">Cuenta Linkedin</label>
-                                <input id="linkedin" type="url" placeholder="Ingresar Linkedin" class="form-control">
+                                <input id="linkedin" name="personalData[linkedin]" type="url" placeholder="Ingresar Linkedin" class="form-control">
                                 <br>
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
-                        <button class="btn btn-primary btn-block" type="submit">Guardar</button>
+                        <button class="btn btn-primary btn-block" onclick="saveData()">Guardar</button>
                     </div>
                 </form>
             </div>
@@ -211,7 +244,7 @@
                 <h4 id="myLargeModalLabel" class="modal-title">Nuevo Establecimiento</h4>
             </div>
             <div class="modal-body">
-                <form method="POST" action="">
+                <form>
                     <div class="form-group">
                         <div class="col-lg-12">
                             <div class="col-lg-6">
@@ -260,4 +293,61 @@
     </div>
 </div>
 <!--modal agregar establecimiento-->
-@stop
+@endsection
+
+@section('specificJS')
+
+<script>
+    $('#email').val($('#correo').val());
+    $('#tel').val($('#telefono1').val());
+    $('#facebook').val($('#facebook1').val());
+    $('#twitter').val($('#twitter1').val());
+    $('#linkedin').val($('#linkedin1').val());
+
+    function saveData()
+    {
+        $.ajaxSetup({
+            header: $('meta[name="_token"]').attr('content')
+        })
+
+        $.ajax({
+            url: '/saveDataContact',
+            type: 'POST',
+            dataType: 'JSON',
+            data: $("#formdatoscontacto").serialize(),
+            beforeSend: function () {
+                $("#formdatoscontacto").hide();
+                $("#loading").show();
+            },
+            success: function (data) {
+
+
+                if (data.successfull === true) {
+                    alert('true');
+                    font = "<i class='fa fa-check fa-5x' style='color: #4caf50;'></i>";
+                    description = data.descripcion;
+
+                } else {
+                    alert('false');
+                    font = "<i class='fa fa-times fa-5x' style='color: #f44336;'></i>";
+                    description = data.descripcion;
+                }
+//
+//                buttons = '<a href="/createPublications" class="btn btn-outline btn-warning"> Crear otra publicación</a>';
+//                buttons += '<a href="/home" class="btn btn-outline btn-warning"> Ver listado de publicacion</a>';
+//                $("#buttons").html(buttons);
+//                console.log(description);
+//                $("#font").html(font);
+//
+//                $("#description-message").html(description);
+//
+//                $("#loading").hide();
+//                $("#response").show();
+
+            }
+        });
+    }
+
+</script>
+
+@endsection

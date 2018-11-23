@@ -21,6 +21,11 @@
 <script src="/js/template/jquery.dataTables.min.js" type="text/javascript"></script>
 <script src="/js/template/dataTables.bootstrap.min.js" type="text/javascript"></script>
 
+<script src="/js/template/jquery.flot.js" type="text/javascript"></script>
+<script src="/js/template/jquery.flot.resize.js" type="text/javascript"></script>
+<script src="/js/template/curvedLines.js" type="text/javascript"></script>
+<script src="/js/template/jquery.flot.tooltip.min.js" type="text/javascript"></script>
+<script src="/js/template/jquery.easypiechart.min_1.js" type="text/javascript"></script>
 <script>
     $(document).ready(function () {
         $('.select2').select2();

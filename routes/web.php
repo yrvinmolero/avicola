@@ -17,7 +17,7 @@ Route::get('/home', 'HomeController@validateHome');
 
 Route::get('/getProducts', 'HomeController@getProducts');
 
-Route::get('/login', function(){
+Route::get('/login', function() {
     return view('auth.login.login');
 });
 
@@ -29,7 +29,7 @@ Route::post('/storePublication', 'PublicationController@store');
 
 Route::post('/validateLogin', 'LoginController@validateLogin');
 
-Route::get('/register', function(){
+Route::get('/register', function() {
     return view('auth.register.register');
 });
 
@@ -37,7 +37,7 @@ Route::post('/validateRegister', 'RegisterController@validateRegister');
 
 Route::post('/registerSuccess', 'RegisterController@validateLogin');
 
-Route::get('/reset', function(){
+Route::get('/reset', function() {
     return view('auth.reset.reset');
 });
 
@@ -45,4 +45,6 @@ Route::get('/details', 'DetailsController@validateDetails');
 
 Route::get('/perfil', 'perfileController@validatePerfil');
 
+Route::post('/saveDataContact', 'PerfileController@saveDate');
 
+Route::get('/avicola', 'avicolaController@validateAvicola');

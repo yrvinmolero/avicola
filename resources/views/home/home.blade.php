@@ -96,27 +96,10 @@
             pubID: pubID,
             },
             success: function (data) {
+                console.log(data);
             var registers = "";
-            var response = "";
-            var check = "<div class='checkbox-custom'>" +
-                    "<input id='product-01' type='checkbox' value='01'>" +
-                    "<label for='product-01' class='pl-0'>&nbsp;</label>" +
-                    "</div>";
-            var options = "<div role='group' aria-label='Basic example' class='btn-group btn-group-sm'>" +
-                    "<button type='button' class='btn btn-outline btn-primary'><i class='ti-eye'></i></button>" +
-                    "<button type='button' class='btn btn-outline btn-success'><i class='ti-pencil'></i></button>" +
-                    "<button type='button' class='btn btn-outline btn-danger'><i class='ti-trash'></i></button>" +
-                    "</div>";
             $.each(data, function (i, getdata) {
-            response += [
-            {"data":check},
-            {"data":getdata.stock.categoriasunidades.unidades.uniDescripcion},
-            {"data":getdata.stock.categoriasunidades.categorias.catDescripcion},
-            {"data":getdata.stock.stoCantidad},
-            {"data":getdata.stock.created_at},
-            {"data":options},
-            ]
-                    registers += "<tr>" +
+            registers += "<tr>" +
                     "<td class='text-center'>" +
                     "<div class='checkbox-custom'>" +
                     "<input id='product-01' type='checkbox' value='01'>" +
