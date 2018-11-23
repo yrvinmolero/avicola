@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Modulos;
 use App\Models\Publicaciones;
-use App\Models\Stockzonas;
+use App\Models\Stock;
 use App\Traits\Modules;
 
 class HomeController extends Controller
@@ -19,23 +19,21 @@ class HomeController extends Controller
 
         if (!empty($_GET['comuna']))
             $zonID = $_GET['comuna'];
-
-        $zonID = 2;
         $modules = $this->getModules(array('N', 'C'));
-        $publications = $this->getPublications(array($zonID));
+        $publications = $this->getPublications($zonID);
         return view('home.home', compact('modules', 'publications'));
     }
 
     public function getPublications($zonID)
     {
-
-        $publications = Publicaciones::with('stock.stockzonas.zonas', 'usuarios');
-
-//        if (!empty($zonID[0])) {
-//            $publications->whereHas('stock.stockZonas', function($zonas) use($zonID) {
-//                $zonas->where('zonID', '=', $zonID[0]);
-//            });
-//        }
+        if (!empty($zonID)) {
+            $publications = Stock::with('stockzonas.zonas', 'publicaciones.usuarios');
+            $publications->whereHas('stockzonas', function($publications) use ($zonID) {
+                $publications->whereIn('zonID', [$zonID]);
+            });
+        } else {
+            $publications = Publicaciones::with('stock.stockZonas.zonas', 'usuarios');
+        }
         return $publications->get()->toArray();
     }
 

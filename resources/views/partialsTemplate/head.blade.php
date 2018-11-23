@@ -26,3 +26,5 @@
 <link rel="stylesheet" type="text/css" href="/css/template/dataTables.bootstrap.min.css">
 
 <link rel="stylesheet" type="text/css" href="/css/template/responsive.bootstrap.min.css">
+<link href="/css/template/7-three-bounce.css" rel="stylesheet" type="text/css"/>
+<link href="/css/template/bootstrap-progressbar-3.3.4.min_1.css" rel="stylesheet" type="text/css"/>

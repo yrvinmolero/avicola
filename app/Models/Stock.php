@@ -29,7 +29,7 @@ class Stock extends Model
 
     public function stockzonas()
     {
-        return $this->hasOne('App\Models\Stockzonas', 'pzoID');
+        return $this->hasOne('App\Models\Stockzonas', 'stoID');
     }
 
 }
