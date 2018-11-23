@@ -6,13 +6,10 @@ use Illuminate\Http\Request;
 use App\Models\Modulos;
 use App\Models\Publicaciones;
 use App\Models\Stockzonas;
-use App\Traits\Modules;
 
 class HomeController extends Controller
 {
-
-    use Modules;
-
+    
     public function validateHome()
     {
         $zonID = null;
@@ -21,9 +18,9 @@ class HomeController extends Controller
             $zonID = $_GET['comuna'];
 
         $zonID = 2;
-        $modules = $this->getModules(array('N', 'C'));
         $publications = $this->getPublications(array($zonID));
-        return view('home.home', compact('modules', 'publications'));
+
+        return view('home.home', compact('publications'));
     }
 
     public function getPublications($zonID)

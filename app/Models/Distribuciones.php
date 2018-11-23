@@ -12,4 +12,9 @@ class Distribuciones extends Model
     {
     	return $this->hasMany('App\Models\Stock', 'disID');
     }
+
+    public function stockNecesidades()
+    {
+    	return $this->hasMany('App\Models\StockNecesidades', 'disID');
+    }
  }

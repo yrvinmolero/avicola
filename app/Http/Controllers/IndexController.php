@@ -11,8 +11,7 @@ class IndexController extends Controller
 
     public function index()
     {
-        $zones = Zonas::where('zonEstado', '=', 'A')->get()->toArray(); 
-
+        $zones =  Zonas::where('zonEstado', '=', 'A')->get()->toArray(); 
         return view('index.index', compact('zones'));
     }
 

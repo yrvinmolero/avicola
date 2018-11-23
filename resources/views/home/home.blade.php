@@ -2,13 +2,6 @@
 
 @section('title', 'Home')
 
-@section('modules')
-
-@foreach($modules as $modul)
-<li class="panel"><a href="{{$modul['modRoute']}}"><i class="{{$modul['modIcono']}}"></i><span class="sidebar-title">{{$modul['modDescripcion']}}</span></a></li>
-@endforeach
-@endsection
-
 @section('content')
 
 <div class="page-header clearfix">
@@ -109,12 +102,12 @@
                     "</div>";
             $.each(data, function (i, getdata) {
             response += [
-            {"data":check},
-            {"data":getdata.stock.categoriasunidades.unidades.uniDescripcion},
-            {"data":getdata.stock.categoriasunidades.categorias.catDescripcion},
-            {"data":getdata.stock.stoCantidad},
-            {"data":getdata.stock.created_at},
-            {"data":options},
+                {"data":check},
+                {"data":getdata.stock.categoriasunidades.unidades.uniDescripcion},
+                {"data":getdata.stock.categoriasunidades.categorias.catDescripcion},
+                {"data":getdata.stock.stoCantidad},
+                {"data":getdata.stock.created_at},
+                {"data":options},
             ]
                     registers += "<tr>" +
                     "<td class='text-center'>" +

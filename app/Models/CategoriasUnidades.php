@@ -22,4 +22,9 @@ class Categoriasunidades extends Model
     {
     	return $this->hasMany('App\Models\Stock', 'cunID');
     }
+
+    public function stockNecesidades()
+    {
+        return $this->hasMany('App\Models\StockNecesidades', 'cunID');
+    }
 }

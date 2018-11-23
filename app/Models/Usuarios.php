@@ -22,4 +22,9 @@ class Usuarios extends Model
         return $this->hasMany('App\Models\usuarioestablecimiento', 'estID');
     }
 
+    public function necesidades()
+    {
+        return $this->hasMany('App\Models\Necesidades', 'usuID');
+    }
+
 }

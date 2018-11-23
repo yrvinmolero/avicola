@@ -18,7 +18,6 @@ use App\Traits\Modules;
 
 class PublicationController extends Controller
 {
-	use Modules;
 
     public function store(Request $request) 
     {
@@ -87,7 +86,6 @@ class PublicationController extends Controller
 
     public function newPublication()
     {
-    	$modules = $this->getModules(array('S', 'C'));
     	$data['units'] = $this->getUnitsEggs();
     	$data['distribution'] = $this->getDistribution();
         $data['zones'] = $this->getZones();

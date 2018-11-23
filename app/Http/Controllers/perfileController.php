@@ -4,22 +4,18 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Modulos;
-use App\Traits\Modules;
 use App\Models\usuarioestablecimiento;
 use App\Models\Zonas;
 use App\Models\Usuarios;
 
 class perfileController extends Controller
 {
-
-    use Modules;
-
     public function validatePerfil()
     {
-        $modules = $this->getModules(array('N', 'C'));
+    
         $usuID = $_GET['u'];
         $establecimientos = $this->validarEstablecimientos(array($usuID));
-        return view('perfile.perfile', compact('modules', 'establecimientos'));
+        return view('perfile.perfile', compact('establecimientos'));
     }
 
     public function validarEstablecimientos($usuID)

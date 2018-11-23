@@ -19,4 +19,9 @@ class Zonas extends Model
         return $this->belongsTo('App\Models\usuarioestablecimiento', 'estID');
     }
 
+    public function stockNecesidades()
+    {
+        return $this->hasMany('App\Models\StockNecesidades', 'zonID');
+    }
+
 }

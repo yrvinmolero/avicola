@@ -1,30 +1,30 @@
 @extends('template')
 
-@section('title', 'Nueva Publicación')
+@section('title', 'Nueva necesidad')
 
 @section('content')
 <div class="page-header clearfix">
     <div class="row">
         <div class="col-sm-6">
-            <h4 class="mt-0 mb-5">Nueva publicación</h4>
+            <h4 class="mt-0 mb-5">Nueva necesidad</h4>
         </div>
     </div>
 </div>
 <div class="page-content container-fluid">
     <div class="page-content container-fluid p-0">
         <div class="row row-0 mailbox">
-            <div class="widget" id="widget-newPublications">
+            <div class="widget" id="widget-newrequirements">
                 <div class="widget-heading">
                     <h3 class="widget-title">Todos los campos son obligatorios</h3>
                 </div>
                 <div class="widget-body">
-                    <form id="formNewPublication">
+                    <form id="formNewrequirement">
                         {{csrf_field()}}
                         <div class="row">
                             <div class="col-xs-12">
                                 <div class="form-group">
                                     <label for="textInput">Título</label>
-                                    <input id="title" type="text" name="publication[title]" class="form-control">
+                                    <input id="title" type="text" name="requirement[title]" class="form-control">
                                     <span class="help-block"></span>
                                 </div>
                             </div>
@@ -33,7 +33,7 @@
                             <div class="col-xs-12">
                                 <div class="form-group">
                                     <label for="textArea">Descripción</label>
-                                    <textarea id="description" rows="3" name="publication[description]" class="form-control"></textarea>
+                                    <textarea id="description" rows="3" name="requirement[description]" class="form-control"></textarea>
                                     <span class="help-block"></span>
                                 </div>
                             </div>
@@ -49,7 +49,7 @@
                                         <div class="col-lg-6 col-md-6 col-xs-12 col-lg-offset-3 col-md-offset-3">
                                             <div class="form-group">
                                                 <label for="selectZones">Zona</label>
-                                                <select id="selectZones-1" class=" form-control" name="publication[products][1][zones]" style="width: 100%;">
+                                                <select id="selectZones-1" class=" form-control" name="requirement[products][1][zones]" style="width: 100%;">
                                                     <option disabled selected="">Seleccione</option>
                                                     @foreach ($data['zones'] as $zones)
                                                     <option value="{{$zones['zonID']}}">{{$zones['zonDescripcion']}}</option>
@@ -60,10 +60,10 @@
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-lg-4 col-md-4 col-xs-12">
+                                        <div class="col-lg-6 col-md-6 col-xs-12">
                                             <div class="form-group">
                                                 <label for="selectType">Tipo</label>
-                                                <select onchange="setSelectCategories(this.value, 1);" id="selectType-1" class=" form-control" name="publication[products][1][type]" style="width: 100%;">
+                                                <select onchange="setSelectCategories(this.value, 1);" id="selectType-1" class=" form-control" name="requirement[products][1][type]" style="width: 100%;">
                                                     <option disabled selected="">Seleccione</option>
                                                     @foreach ($data['units'] as $units)
                                                     <option value="{{$units['uniID']}}">{{$units['uniDescripcion']}}</option>
@@ -72,29 +72,27 @@
                                                 <span class="help-block"></span>
                                             </div>
                                         </div>
-                                        <div class="col-lg-4 col-md-4 col-xs-12">
+                                        <div class="col-lg-6 col-md-6 col-xs-12">
                                             <div class="form-group">
                                                 <label for="selectCategories">Categoria</label>
-                                                <select id="selectCategories-1" class=" form-control" name="publication[products][1][categories]" disabled style="width: 100%;">
+                                                <select id="selectCategories-1" class=" form-control" name="requirement[products][1][categories]" disabled style="width: 100%;">
                                                     <option disabled selected="">Seleccione</option>
                                                 </select>
                                                 <span class="help-block"></span>
                                             </div>
                                         </div>
 
-                                        <div class="col-lg-4 col-md-4 col-xs-12">
+                                        <div class="col-lg-6 col-md-6 col-xs-12">
                                             <div class="form-group">
                                                 <label for="textInput">Cantidad</label>
-                                                <input id="quantity-1" name="publication[products][1][quantity]" type="text" class="form-control">
+                                                <input id="quantity-1" name="requirement[products][1][quantity]" type="text" class="form-control">
                                                 <span class="help-block"></span>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-lg-4 col-md-4 col-xs-12">
+                                         <div class="col-lg-6 col-md-6 col-xs-12">
                                             <div class="form-group">
                                                 <label for="selectDistribution">Distribución</label>
-                                                <select id="selectDistribution-1" class=" form-control" name="publication[products][1][distribution]"  style="width: 100%;">
+                                                <select id="selectDistribution-1" class=" form-control" name="requirement[products][1][distribution]"  style="width: 100%;">
                                                     <option disabled selected="">Seleccione</option>
                                                     @foreach ($data['distribution'] as $distribution)
                                                     <option value="{{$distribution['disID']}}">{{$distribution['disDescripcion']}}</option>
@@ -103,20 +101,6 @@
                                                 <span class="help-block"></span>
                                             </div>
                                         </div>
-                                        <div class="col-lg-4 col-md-4 col-xs-12">
-                                            <div class="form-group">
-                                                <label for="quantityMin">Cantidad minima por compra</label>
-                                                <input id="quantityMin-1" type="text" name="publication[products][1][quantityMin]" class="form-control">
-                                                <span class="help-block"></span>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4 col-md-4 col-xs-12">
-                                            <div class="form-group">
-                                                <label for="price">Precio</label>
-                                                <input id="price-1" name="publication[products][1][price]" type="text" class="form-control">
-                                                <span class="help-block"></span>    
-                                            </div>
-                                        </div>      
                                     </div>
                                 </div>
                             </div>
@@ -124,7 +108,7 @@
 
                         <div class="row ">
                             <a onclick="addProducts();" type="submit" class="btn btn-outline btn-primary  pull-left"><i class="fa fa-plus"></i> Añadir producto</a>
-                            <a onclick="storePublication();" type="submit" class="btn btn-outline btn-success  pull-right"><i class="fa fa-save"></i> Crear publicación</a>
+                            <a onclick="storeRequirement();" type="submit" class="btn btn-outline btn-success  pull-right"><i class="fa fa-save"></i> Crear necesidad</a>
                         </div>
                     </form>
                 </div>
@@ -135,7 +119,7 @@
                         <div class="sk-child sk-double-bounce1"></div>
                         <div class="sk-child sk-double-bounce2"></div>
                     </div>
-                    <h5>&nbsp; Creando publicación, por favor espere...</h5>
+                    <h5>&nbsp; Creando necesidad, por favor espere...</h5>
                 </div>
             </div>    
 
@@ -172,13 +156,11 @@
         addProduct = addProduct.replace('selectDistribution-1', "selectDistribution-" + count);
         addProduct = addProduct.replace('quantityMin-1', "quantityMin-" + count);
         addProduct = addProduct.replace('price-1', "price-" + count);
-        addProduct = addProduct.replace("publication[products][1][zones]", 'publication[products][' + count + '][zones]');
-        addProduct = addProduct.replace("publication[products][1][type]", 'publication[products][' + count + '][type]');
-        addProduct = addProduct.replace("publication[products][1][categories]", 'publication[products][' + count + '][categories]');
-        addProduct = addProduct.replace("publication[products][1][quantity]", 'publication[products][' + count + '][quantity]');
-        addProduct = addProduct.replace("publication[products][1][distribution]", 'publication[products][' + count + '][distribution]');
-        addProduct = addProduct.replace("publication[products][1][quantityMin]", 'publication[products][' + count + '][quantityMin]');
-        addProduct = addProduct.replace("publication[products][1][price]", 'publication[products][' + count + '][price]');
+        addProduct = addProduct.replace("requirement[products][1][zones]", 'requirement[products][' + count + '][zones]');
+        addProduct = addProduct.replace("requirement[products][1][type]", 'requirement[products][' + count + '][type]');
+        addProduct = addProduct.replace("requirement[products][1][categories]", 'requirement[products][' + count + '][categories]');
+        addProduct = addProduct.replace("requirement[products][1][quantity]", 'requirement[products][' + count + '][quantity]');
+        addProduct = addProduct.replace("requirement[products][1][distribution]", 'requirement[products][' + count + '][distribution]');
 
         $(".products").append(addProduct);
     }
@@ -204,7 +186,7 @@
         });
     }
 
-    function storePublication()
+    function storeRequirement()
     {
 
         $('.form-group').removeClass('has-error');
@@ -265,18 +247,6 @@
                 $('#selectDistribution-' + i).parent().children('span').html('Debe ingresar una tipo de distribución.');
                 return
             }
-
-            if (!estaSeleccionado(quantityMin)) {
-                $('#quantityMin-' + i).parent().addClass('has-error');
-                $('#quantityMin-' + i).parent().children('span').html('Debe ingresar una cantidad minima permitida de compra.');
-                return
-            }
-
-            if (estaVacio(price)) {
-                $('#price-' + i).parent().addClass('has-error');
-                $('#price-' + i).parent().children('span').html('Debe ingresar una precio.');
-                return
-            }
         }
 
         $.ajaxSetup({
@@ -284,12 +254,12 @@
         })
 
         $.ajax({
-            url: '/storePublication',
+            url: '/storeRequirement',
             type: 'POST',
             dataType: 'JSON',
-            data: $("#formNewPublication").serialize(),
+            data: $("#formNewrequirement").serialize(),
             beforeSend: function () {
-                $("#widget-newPublications").hide();
+                $("#widget-newrequirements").hide();
                 $("#loading").show();
             },
             success: function (data) {
@@ -303,8 +273,8 @@
                     description = data.descripcion;
                 }
 
-                buttons = '<a href="/createPublications" class="btn btn-outline btn-warning"> Crear otra publicación</a>';
-                buttons += '<a href="/home" class="btn btn-outline btn-warning"> Ver listado de publicacion</a>';
+                buttons = '<a href="/createRequirement" class="btn btn-outline btn-warning"> Crear otra necesidad</a>';
+                buttons += '<a href="/home" class="btn btn-outline btn-warning"> Ver listado de necesidades</a>';
                 $("#buttons").html(buttons);
                 console.log(description);
                 $("#font").html(font);

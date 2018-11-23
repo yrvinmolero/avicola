@@ -2,13 +2,6 @@
 
 @section('title', 'Detalles')
 
-@section('modules')
-
-@foreach($modules as $modul)
-<li class="panel"><a href="{{$modul['modRoute']}}"><i class="{{$modul['modIcono']}}"></i><span class="sidebar-title">{{$modul['modDescripcion']}}</span></a></li>
-@endforeach
-@endsection
-
 @section('content')
 <!-- Main Sidebar end-->
 <div class="page-header clearfix">
